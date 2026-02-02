@@ -14,7 +14,6 @@ int main(void) {
     //endl - end line (move the cursor in the terminal to the next line)
     // ctrl b - hides the explorer
 
-
     std::cout << "Hello from COP3371!\n" << std:: endl;
 
     std:: cout << "(15 * 78) + 14 is " << (15 * 78) + 14 << std::endl;

@@ -55,7 +55,7 @@ class Route{
     
     // no argument contructor (has different syntax)
     //colon provides property name and value
-    Route() : source("-"), destination("-"), length(0)
+    Route() { source("-"); destination("-"); length(0)}
 
     Route(const std::string& s, const std::string& d){
         setSource(s);

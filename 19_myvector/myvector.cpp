@@ -1,5 +1,6 @@
 #include "myvector.hpp"
 #include <iostream>
+#include <vector>
 
 MyVector::MyVector(int capacity) {
     this->capacity = capacity;
@@ -75,7 +76,11 @@ int MyVector::getCapacity() const {
     return capacity;
 }
 
-int& MyVector::at(int index) const {
+int& MyVector::at(int index) {
+    if(index < 0){
+        index = size + index;
+    }
+
     if (index < 0 || index >= size) {
         throw "At: out of boundaries\n";
     }
@@ -83,3 +88,49 @@ int& MyVector::at(int index) const {
         return elements[index];
     }
 }
+
+int MyVector::getSize() const {
+    return size;
+}
+
+void MyVector::clear(){
+
+    //delete [] elements;
+    size = 0;
+    capacity = 10;
+    elements = new int[capacity];
+
+}
+
+void MyVector::push_front(int value) {
+
+    if(full()){
+        allocateMemory(capacity * 2);
+    }
+    
+    for(int i = size; i > 0; i--){
+        elements[i]= elements[i - 1];
+    }
+    elements[0] = value;
+    size++;
+}
+
+void MyVector::insert(int pos, int value) {
+    
+    if(pos < 0){
+        pos = size + pos + 1;
+    }
+    
+    if(full()){
+        allocateMemory(capacity * 2);
+    }
+    
+    for (int i = size; i > pos; i--){
+        elements[i] = elements[i - 1];
+    }
+
+    elements[pos] = value;
+    size++;
+    
+}
+

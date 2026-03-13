@@ -4,6 +4,7 @@
 class MyVector {
 public:
     MyVector(int capacity = 10);
+    // Copy constructor
     MyVector(const MyVector& other);
 
     // Destructor
@@ -11,17 +12,15 @@ public:
 
     void print() const;
     void push_back(int val);    // Add the new element at the end
-
     int pop_back();             // Removes the last element and returns its value
     
     bool empty() const;
-
     int getCapacity() const;
-
-    int& at(int index) const;
-
-    int thirdMax() const;   // Return third distinct max value from the vector
-                            // If no thirdMax - return max value;
+    int& at(int index);
+    int getSize() const;
+    void clear();
+    void push_front(int value);
+    void insert(int pos, int value);
 
 private:
     int* elements;      // An array of integers

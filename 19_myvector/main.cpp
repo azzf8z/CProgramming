@@ -2,23 +2,40 @@
 #include <iostream>
 
 int main(void) {
-    // Create MyVector object dynamically
-    MyVector* mv = new MyVector(15);
+    // Create a MyVector object dynamically
+    MyVector *mvPtr = new MyVector(10);
 
-    for (int i = 0; i < 25; i++) {
-        mv->push_back(i * i);
+    for (int i = 0; i < 100; i++) {
+        mvPtr->push_back(i);
     }
 
-    mv->at(0) = 10;
-    std::cout << "The first element is " << mv->at(0) << std::endl;
+    // Test clear
+    mvPtr->print();
+    mvPtr->clear();
+    std::cout << mvPtr->getCapacity() << std::endl;
+    mvPtr->print();
 
-    while(!mv->empty()) {
-        std::cout << "Capacity: " << mv->getCapacity() << std::endl;
-        std::cout << mv->pop_back() << std::endl;
-        mv->print();
+
+    // Test insert
+    mvPtr->insert(-1, 20);
+    mvPtr->insert(0, 1);
+    for (int i = 1; i < 19; i++) {
+        mvPtr->insert(i, i + 1);
+    }
+    mvPtr->print();
+    
+    // Test push_front
+    for (int i = 1; i < 19; i++) {
+        mvPtr->push_front(i * -1);
+    }
+    mvPtr->print();
+
+    // Test at
+    for (int i = 0; i < mvPtr->getSize(); i++) {
+        std::cout << mvPtr->at(i) << ' ' << mvPtr->at(-(i + 1)) << std::endl;
     }
     
-    delete mv;
-
+    delete mvPtr;
+    
     return 0;
 }

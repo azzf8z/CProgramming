@@ -1,28 +1,36 @@
 #ifndef MYVECTOR_HPP
 #define MYVECTOR_HPP
 
-class MyVector{
-
-private:
-    int* elements;//array of elements 
-    int size;//current number of elements
-    int capacity;//max number of elements vect can hold
-
+class MyVector {
 public:
-    //constructor
-    MyVector(int capacity = 1);
+    MyVector(int capacity = 10);
+    MyVector(const MyVector& other);
 
-    //copy constructor
-    MyVector(const MyVector&  other);
-    
-    //Destructor
+    // Destructor
     ~MyVector();
 
     void print() const;
-    void push_back(int val);
+    void push_back(int val);    // Add the new element at the end
 
+    int pop_back();             // Removes the last element and returns its value
+    
+    bool empty() const;
 
+    int getCapacity() const;
+
+    int& at(int index) const;
+
+    int thirdMax() const;   // Return third distinct max value from the vector
+                            // If no thirdMax - return max value;
+
+private:
+    int* elements;      // An array of integers
+    int size;           // The current number of elements
+    int capacity;       // The max number of elements in the array
+
+    bool full() const;
+
+    void allocateMemory(int memory_size);
 };
-
 
 #endif

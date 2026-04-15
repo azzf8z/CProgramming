@@ -15,3 +15,7 @@ bool Point::operator!=(const Point& other){
 int& Point::operator[](int index){
     return (index == 0) ? x : y;
 }
+
+Point Point::operator+(const Point& other){
+    return Point(x + other.x, y + other.y);
+}
